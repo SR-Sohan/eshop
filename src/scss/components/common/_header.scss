@@ -1,0 +1,65 @@
+.header_component{
+    .header_top{
+        background-color: $primary;
+        .header_bottom_wrap{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 12px;
+            .offer_area{                
+                span:last-child{
+                    margin-left: 10px;
+                }
+            }
+            .language_area{
+                select{
+                    background-color:$primary;
+                    color: #fff;
+                    margin: 0px 6px;
+                    padding: 0px 10px;
+                    border: none;
+                    option{
+                        padding: 7px 0;
+                        display: block;
+                        margin: 10px 0;
+                    }
+                }
+            }
+        }
+    }
+    .header_bottom{
+        .nav-link{
+            font-weight: 500;
+            &:hover{
+                color: $primary;
+            }
+        }
+        .header_account{
+            .cart_icon{
+                position: relative;
+                svg{
+                    font-size: 24px;
+                }
+                p{
+                    position: absolute;
+                    background-color: $primary;
+                    color: white;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    text-align: center;
+                    align-items: center;
+                    top: -7px;
+                    right: -10px;
+                    font-size: 12px;
+                    line-height: 20px;
+                }
+            }
+            .sing_btn{
+                margin-left: 20px;
+            }
+        }
+    }
+}
