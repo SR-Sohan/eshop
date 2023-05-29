@@ -35,3 +35,44 @@
         }
     }
 }
+
+.category_area{
+    h3{
+        font-size: 28px;
+        line-height: 28px;
+        font-weight: 700;
+        color: $text_color;
+    }
+    .category_item{
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        img{
+            width: 100%;
+            height: 100%;
+            transition: .5s;
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+        h4{
+            position: absolute;
+            top: 10px;
+            left: 20%;
+            z-index: 999;
+            color: #fff;
+            font-weight: 600;
+            font-size: 24px;
+        }
+    }
+}
+
+.product_component{
+    h2{
+        font-size: 28px;
+        line-height: 28px;
+        font-weight: 700;
+        color: $text_color;
+    }
+}
