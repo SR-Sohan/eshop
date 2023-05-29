@@ -13,3 +13,18 @@ ul{
     padding: 0;
     list-style: none;
 }
+
+.submit_btn{
+    padding: 8px 35px;
+    border: 1px solid $primary;
+    color: $primary;
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 500;
+    transition: .5s;
+    &:hover{
+        background-color: $primary;
+        color: #fff;
+    }
+}

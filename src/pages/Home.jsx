@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import ProductServices from "../services/ProductServices";
 import useAsync from "../hooks/useAsync";
 import { Link } from "react-router-dom";
-import cart1 from "../assets/images/category/cat1.png"
-import cart2 from "../assets/images/category/cat2.png"
-import cart3 from "../assets/images/category/cat3.png"
-import cart4 from "../assets/images/category/cat4.png"
-import cart5 from "../assets/images/category/cat5.png"
-import cart6 from "../assets/images/category/cat6.png"
+import cart1 from "../assets/images/category/cat1.png";
+import cart2 from "../assets/images/category/cat2.png";
+import cart3 from "../assets/images/category/cat3.png";
+import cart4 from "../assets/images/category/cat4.png";
+import cart5 from "../assets/images/category/cat5.png";
+import cart6 from "../assets/images/category/cat6.png";
 import Product from "../components/home/Product";
+import Card from "../components/common/Card";
 
 const Home = () => {
   const { data, isLoading } = useAsync(ProductServices.getProducts);
@@ -42,38 +43,38 @@ const Home = () => {
           <div className="row g-3">
             <div className="col-lg-2 col-md-3 col-sm-4">
               <div className="category_item">
-                  <img src={cart1} alt="" />
-                  <h4>Furniture</h4>
+                <img src={cart1} alt="" />
+                <h4>Furniture</h4>
               </div>
             </div>
             <div className="col-lg-2 col-md-3 col-sm-4">
               <div className="category_item">
-                  <img src={cart2} alt="" />
-                  <h4>Hand Bag</h4>
+                <img src={cart2} alt="" />
+                <h4>Hand Bag</h4>
               </div>
             </div>
             <div className="col-lg-2 col-md-3 col-sm-4">
               <div className="category_item">
-                  <img src={cart3} alt="" />
-                  <h4>Books</h4>
+                <img src={cart3} alt="" />
+                <h4>Books</h4>
               </div>
             </div>
             <div className="col-lg-2 col-md-3 col-sm-4">
               <div className="category_item">
-                  <img src={cart4} alt="" />
-                  <h4>Tech</h4>
+                <img src={cart4} alt="" />
+                <h4>Tech</h4>
               </div>
             </div>
             <div className="col-lg-2 col-md-3 col-sm-4">
               <div className="category_item">
-                  <img src={cart5} alt="" />
-                  <h4>Sneakers</h4>
+                <img src={cart5} alt="" />
+                <h4>Sneakers</h4>
               </div>
             </div>
             <div className="col-lg-2 col-md-3 col-sm-4">
               <div className="category_item">
-                  <img src={cart6} alt="" />
-                  <h4>Travel</h4>
+                <img src={cart6} alt="" />
+                <h4>Travel</h4>
               </div>
             </div>
           </div>
@@ -82,7 +83,21 @@ const Home = () => {
       {/* categories area end  */}
 
       {/* products area start  */}
-      <Product/>
+      <div className="product_area my-5">
+        <div className="container">
+          <h2 >Todays Best Deals For You!</h2>
+          <div className="row g-4">
+            <Card col={3}/>
+            <Card col={3}/>
+            <Card col={3}/>
+            <Card col={3}/>
+            <Card col={3}/>
+            <Card col={3}/>
+            <Card col={3}/>
+            <Card col={3}/>
+          </div>
+        </div>
+      </div>
       {/* products area end */}
     </>
   );
