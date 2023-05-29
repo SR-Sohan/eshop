@@ -80,7 +80,7 @@ const Header = () => {
                 <div className="cart_icon">
                   <BsCart4 />
                   <p>
-                    <span>13</span>
+                    <span>22</span>
                   </p>
                 </div>
                 <Link className="sing_btn" to="/login">Sign In</Link>
