@@ -1,6 +1,96 @@
 .footer_component{
+    margin-top: 100px;
     .footer_wrap{
         border-top: 1px solid #d3d2d2;
+        .top_footer{
+            margin-bottom: 70px;
+            .footer_item{
+                p{
+                    font-size: 14px;
+                    padding: 25px 0;
+                }
+                h3{
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+                ul{
+                    li{
+                        a{
+                            font-size: 14px;
+                            color: $text_color;
+                            line-height: 28px;
+                            transition: .5s;
+                            &:hover{
+                                color: $red;
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+                .payment_method{
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    .payment_item{
+                        width: 58px;
+                        height: 40px;
+                        border: 1px solid #d3d2d2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+        .bottom_footer{
+            border-top: 1px solid #d3d2d2;
+            padding-top: 70px;
+            .footer-icon{
+                display: flex;
+                align-items: center;
+                .f_icon_item{
+                    margin-right: 14px;
+                    display: flex;
+                    align-items: center;
+                    svg{
+                        color: $pink;
+                        font-size: 22px;
+                        margin-right: 5px;
+                    }
+                    span{
+                        font-size: 15px;
+                        font-weight: 500;
+                        transition: .5s;
+                        &hover{
+                            color: $red;
+                        }
+                    }
+                }
+            }
+            .terms_area{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                ul{
+                    display: flex;
+                    align-items: center;
+                    li{
+                        a{
+                            margin-left: 10px;
+                            transition: .5s;
+                            &:hover{
+                                color: $red;
+                            }
+                        }
+                    }
+                }
+                p{
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
     }
     
 }

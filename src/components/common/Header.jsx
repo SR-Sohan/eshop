@@ -77,12 +77,12 @@ const Header = () => {
                 </li>
               </ul>
               <div className="header_account d-flex align-items-center">
-                <div className="cart_icon">
+                <Link to="/cart" className="cart_icon">
                   <BsCart4 />
                   <p>
                     <span>22</span>
                   </p>
-                </div>
+                </Link>
                 <Link className="sing_btn" to="/login">Sign In</Link>
                 <div className="dropdown ms-3">
                   <button

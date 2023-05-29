@@ -3,7 +3,7 @@ body{
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     color: $text_color;
-    font-weight: 500;
+    font-weight: 400;
 }
 a{
     text-decoration: none;
@@ -11,4 +11,5 @@ a{
 ul{
     margin: 0;
     padding: 0;
+    list-style: none;
 }
