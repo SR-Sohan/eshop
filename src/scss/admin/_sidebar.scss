@@ -1,0 +1,31 @@
+.sidebar_component{
+    background-color: $card_bg;
+    height: 100vh;
+    position: relative;
+    left: -12px;
+    padding: 20px;  
+    .sidebar_nav {
+        .sidebar_item{
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            svg{
+                font-size: 20px;
+                color: $primary;
+            }
+            a{
+                font-size: 18px;
+                font-weight: 500;
+                margin-left: 15px;
+                color: $pink;
+            }
+            button{
+                border: none;
+                font-size: 18px;
+                font-weight: 500;
+                margin-left: 15px;
+                color: $pink;
+            }
+        }
+    }
+}

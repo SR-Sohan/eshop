@@ -1,0 +1,35 @@
+.dash_header_component{
+    background-color: $card_bg;
+    position: relative;
+    left: -36px;
+    width: 100%;
+    .dash_header_wrap{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .user_name{
+            font-size: 22px;
+            font-weight: 600;
+            color: $primary;
+            p{
+                margin: 0;
+                padding: 0;
+            }
+        }
+        .logout{
+            button{
+                border: 1px solid $primary;
+                padding: 10px 25px;
+                color: $primary;
+                border-radius: 25px;
+                font-size: 18px;
+                font-weight: 500;
+                &:hover{
+                    background-color: $primary;
+                    color: #fff;
+                }
+            }
+        }
+    }
+ 
+}
