@@ -42,3 +42,40 @@ ul{
         color: #333333;
     }
 }
+
+@mixin page_banner{
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 150px 0;
+    position: relative;
+    z-index: -2;
+    border-radius: 20px;
+    margin-bottom: 60px;
+    &::after{
+        position: absolute;
+        content: "";
+        background: #000;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        opacity: .4;
+        border-radius: 20px;
+    }
+    h2{
+        text-align: center;
+        color: #fff;
+        z-index: 222;
+    }
+}
+
+.about_banner{
+    background-image: url("../assets/images/about.jpg");  
+    @include page_banner;
+}
+.contact_banner{
+    background-image: url("../assets/images/contact.jpg");  
+    @include page_banner;
+}
