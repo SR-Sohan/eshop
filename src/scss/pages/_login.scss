@@ -1,16 +1,26 @@
 .login_component{
+    .form_img{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       
+        img{
+            max-width: 350px;
+        }
+    }
     form{
-        width: 50%;
+        width: 100%;
         padding: 35px;
-        margin: 30px auto;
-        border: 1px solid #d3d2d2;
         border-radius: 20px;
         text-align: center;
+      
         h3{
             color: $primary;
             font-size: 48px;
             font-weight: 600;
         }
+       
         .form_input_wrap{
             margin-bottom: 15px;
             .label{

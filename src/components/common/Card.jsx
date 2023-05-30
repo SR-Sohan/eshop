@@ -1,7 +1,7 @@
 import React from 'react'
 import img1 from '../../assets/images/products/p1.png';
-import {AiOutlineStar} from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import Rating from './Rating';
 
 const Card = ({col}) => {
     let colClass = `col-lg-${col}`;
@@ -17,16 +17,7 @@ const Card = ({col}) => {
                 <p>$59</p>
             </div>
             <p>Organic Cotton, fairtrade certified</p>
-            <div className="product_rating d-flex ">
-              <div className="rating_star ">
-                <AiOutlineStar/>
-                <AiOutlineStar/>
-                <AiOutlineStar/>
-                <AiOutlineStar/>
-                <AiOutlineStar/>
-              </div>
-              <p>(121)</p>
-            </div>
+            <Rating/>
             <Link className='submit_btn' to={`/products/${2}`}>View Details</Link>
         </div>
       </div>

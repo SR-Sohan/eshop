@@ -28,3 +28,17 @@ ul{
         color: #fff;
     }
 }
+
+.product_rating {
+    margin-bottom: 10px;
+    .rating_star{
+        svg{
+            color: $primary;
+            font-size: 16px;
+        }
+    }
+    p{
+        font-size: 14px;
+        color: #333333;
+    }
+}
