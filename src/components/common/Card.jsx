@@ -1,24 +1,24 @@
 import React from 'react'
-import img1 from '../../assets/images/products/p1.png';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
+const imgUrl = import.meta.env.VITE_API_IMG_URL;
 
-const Card = ({col}) => {
+const Card = ({col,product}) => {
     let colClass = `col-lg-${col}`;
   return (
     <div className={colClass}>
       <div className="product_card">
         <div className="product_img">
-            <img src={img1} alt="" />
+            <img src={`${imgUrl}/product/${product.image}`} alt="" />
         </div>
         <div className="product_content">
             <div className="product_title d-flex align-items-center justify-content-between">
-                <h4>Laptop sleeve MacBook</h4>
-                <p>$59</p>
+                <h4>{product.title}</h4>
+                <p>${product.price}</p>
             </div>
-            <p>Organic Cotton, fairtrade certified</p>
+            <p>{product.description}</p>
             <Rating/>
-            <Link className='submit_btn' to={`/products/${2}`}>View Details</Link>
+            <Link className='submit_btn' to={`/products/${product.id}`}>View Details</Link>
         </div>
       </div>
     </div>

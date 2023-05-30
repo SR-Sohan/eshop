@@ -4,23 +4,23 @@ import httpRequest from "./httpClient";
 class ProductServices {
 
     getProducts(){
-        return httpRequest.get("products")
+        return httpRequest.get("products.php")
     }
 
     getProductById(id){
-        return httpRequest.get(`products/${id}`)
+        return httpRequest.get(`products.php?id=${id}`)
     }
 
     postProduct(data){
-        return httpRequest.post("products",data)
+        return httpRequest.post("products.php",data)
     }
 
     updateProduct(id,data){
-        return httpRequest.patch(`products/${id}`,data)
+        return httpRequest.patch(`products.php/${id}`,data)
     }
 
     deleteProduct(id){
-        return httpRequest._delete(`products/${id}`)
+        return httpRequest.remove(`products.php?id=${id}`)
     }
 }
 

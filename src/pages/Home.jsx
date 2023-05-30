@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ProductServices from "../services/ProductServices";
 import useAsync from "../hooks/useAsync";
 import { Link } from "react-router-dom";
@@ -8,13 +8,12 @@ import cart3 from "../assets/images/category/cat3.png";
 import cart4 from "../assets/images/category/cat4.png";
 import cart5 from "../assets/images/category/cat5.png";
 import cart6 from "../assets/images/category/cat6.png";
-import Product from "../components/home/Product";
 import Card from "../components/common/Card";
 
 const Home = () => {
-  const { data, isLoading } = useAsync(ProductServices.getProducts);
+  const { data, isSuccess } = useAsync(ProductServices.getProducts);
 
-  console.log(data);
+
 
   return (
     <>
@@ -87,14 +86,10 @@ const Home = () => {
         <div className="container">
           <h2 >Todays Best Deals For You!</h2>
           <div className="row g-4">
-            <Card col={3}/>
-            <Card col={3}/>
-            <Card col={3}/>
-            <Card col={3}/>
-            <Card col={3}/>
-            <Card col={3}/>
-            <Card col={3}/>
-            <Card col={3}/>
+            {
+              isSuccess && data.map( item => <Card key={item.id} product={item} col={3}/>)
+            }
+            
           </div>
         </div>
       </div>
