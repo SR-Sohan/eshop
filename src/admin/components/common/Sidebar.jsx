@@ -3,6 +3,7 @@ import logo from "../../../assets/images/logo.svg";
 import { Link } from "react-router-dom";
 import { AiOutlineHome, AiOutlineDashboard } from "react-icons/ai";
 import { FaProductHunt } from "react-icons/fa";
+import { TbBrand4Chan,TbCategory } from "react-icons/tb";
 const Sidebar = () => {
   return (
     <div className="sidebar_component">
@@ -20,21 +21,53 @@ const Sidebar = () => {
           <AiOutlineDashboard />
           <Link to="/dashboard">Dashboard</Link>
         </div>
+
+        <div className="sidebar_item">
+          <TbBrand4Chan />
+          <div className="btn-group dropend">
+            <button
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Brands
+            </button>
+            <ul className="dropdown-menu">
+                <li><Link to="brands">Brand</Link></li>
+                <li><Link to="add-brand">Add Brand</Link></li>
+            </ul>
+          </div>
+        </div>
+        <div className="sidebar_item">
+          <TbCategory />
+          <div className="btn-group dropend">
+            <button
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Category
+            </button>
+            <ul className="dropdown-menu">
+                <li><Link to="categories">Categories</Link></li>
+                <li><Link to="add-categories">Add Categories</Link></li>
+            </ul>
+          </div>
+        </div>
         <div className="sidebar_item">
           <FaProductHunt />
-          <div class="btn-group dropend">
+          <div className="btn-group dropend">
             <button
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               Products
             </button>
-            <ul class="dropdown-menu">
+            <ul className="dropdown-menu">
                 <li><Link to="products">Products</Link></li>
                 <li><Link to="add-product">Add Product</Link></li>
             </ul>
           </div>
         </div>
+
       </div>
     </div>
   );

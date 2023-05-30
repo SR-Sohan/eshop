@@ -1,0 +1,25 @@
+.product_add_component{
+    form{
+        width: 60%;
+        padding: 50px;
+        margin: 50px auto;
+        h1{
+            margin: 15px 0;
+            text-align: center;
+        }
+        .input_wrap{
+            margin-bottom: 15px;
+            input,select,textarea{
+                width: 100%;
+                padding: 10px 25px;
+                border: 1px solid $primary;
+                border-radius: 25px;
+            }
+            
+        }
+        input[type="file"]{
+            border: none;
+            width: 300px;
+        }
+    }
+}

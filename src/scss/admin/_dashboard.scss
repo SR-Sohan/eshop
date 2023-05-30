@@ -1,0 +1,35 @@
+.dashboard_component{
+    .single_bg{        
+        &:nth-child(1){
+        .single_dash_item{
+            background-color: $pink;
+        }
+        
+        }
+        &:nth-child(2){
+        .single_dash_item{
+            background-color: $danger;
+        }
+        
+        }
+        &:nth-child(3){
+        .single_dash_item{
+            background-color: $red;
+        }
+        
+        }
+        &:nth-child(4){
+        .single_dash_item{
+            background-color: $primary;
+        }
+        
+        }
+    }
+    .single_dash_item{
+        text-align: center;
+        color: #fff;
+        padding: 35px 0;
+        border-radius: 10px;
+       
+    }
+}
