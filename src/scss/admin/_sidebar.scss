@@ -1,14 +1,14 @@
 .sidebar_component{
     background-color: $card_bg;
     height: 100vh;
-    position: relative;
+    position: fixed;
     left: -12px;
     padding: 20px;  
     .sidebar_nav {
         .sidebar_item{
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 25px;
             svg{
                 font-size: 20px;
                 color: $primary;

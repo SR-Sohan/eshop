@@ -8,7 +8,7 @@ const About = () => {
         <div className="about_banner">
           <h2>About Page</h2>
         </div>
-        <div className="row">
+        <div className="row py-5 my-5">
           <div className="col-md-5">
             <div className="about_img text-center">
               <img className="img-fluid" src={img} alt="" />
