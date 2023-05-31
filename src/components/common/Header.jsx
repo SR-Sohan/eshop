@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiPhoneCall } from "react-icons/fi";
 import { BsCart4 } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { useCartContext } from "../../cart/CartProvider";
+import auth from "../../firebase/firebaseConfig";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 const Header = () => {
   const { cartState} = useCartContext();
+  const [isLogin,setIsLogin] = useState(false);
+  const [displayName,setDisplayName] = useState('')
+
+  let navigate = useNavigate();
+
+ useEffect(()=>{
+  onAuthStateChanged(auth,(user)=> {
+      if(user){
+          setIsLogin(true)
+          setDisplayName(user.displayName);
+      }else{
+          setIsLogin(false)
+      }
+  })
+ },[isLogin])
+
+  const handleLogout = () => {
+      signOut(auth).then(() => {
+          navigate("/login")
+        }).catch((error) => {
+          alert(error.message)
+        });
+  }
+
   return (
     <header className="header_component">
       <div className="header_top">
@@ -82,18 +108,21 @@ const Header = () => {
                 <Link to="/cart" className="cart_icon">
                   <BsCart4 />
                   <p>
-                    <span>{cartState.items.length}</span>
+                    <span>{cartState.items && cartState.items.length}</span>
                   </p>
                 </Link>
-                <Link className="sing_btn" to="/login">Sign In</Link>
-                <div className="dropdown ms-3">
+                {
+                  !isLogin && <Link className="sing_btn" to="/login">Sign In</Link>
+                }
+                {
+                  isLogin &&<div className="dropdown ms-5">
                   <button
                     className="btn btn-primary dropdown-toggle "
                     type="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                   Sohanur Rahman
+                   {displayName && displayName}
                   </button>
                   <ul className="dropdown-menu">
                     <li>
@@ -102,12 +131,16 @@ const Header = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="/logout">
+                      <Link onClick={handleLogout} className="dropdown-item" to="/logout">
                         Logout
                       </Link>
                     </li>
                   </ul>
                 </div>
+                }
+                
+                
+
               </div>
             </div>
           </div>

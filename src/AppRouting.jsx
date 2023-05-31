@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
 import { Suspense, lazy } from "react";
 import Loading from "./components/others/Loading";
+import PrivateRoute from "./PrivateRoute";
 const Home = lazy(() => import("./pages/Home"));
 const Products = lazy(() => import("./pages/Products"));
 const ProductsDetails = lazy(() => import("./pages/ProductsDetails"));
@@ -38,7 +39,7 @@ const AppRouting = () => {
             <Route path="cart" element={<Cart />} />
             <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="dashboard" element={<DashLayout/>}>
+          <Route path="dashboard" element={ <PrivateRoute><DashLayout/></PrivateRoute> }>
               <Route index element={<Dashboard/>} />
               <Route path="products" element={<DashProducts/>} />
               <Route path="brands" element={<Brand/>} />

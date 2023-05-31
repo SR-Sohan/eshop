@@ -1,8 +1,54 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import login from "../assets/images/icon/i3.svg"
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import login from "../assets/images/icon/i3.svg";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import auth from "../firebase/firebaseConfig";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const [uData, setUData] = useState({
+    email: "",
+    password: "",
+  });
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        navigate("/")
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  }, [auth]);
+
+  const [loading, setLoading] = useState(false);
+  const inputValue = (e) => {
+    setUData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    signInWithEmailAndPassword(auth, uData.email, uData.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        if (user) {
+          toast.success("Login Success");
+          setLoading(false);
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        toast.error(errorMessage);
+        setLoading(false);
+      });
+  };
+
   return (
     <div className="login_component">
       <div className="container ">
@@ -13,8 +59,13 @@ const Login = () => {
             </div>
           </div>
           <div className="col-md-6">
-            <form>
+            <form onSubmit={handleSubmit}>
               <h3 className="text-center">Login</h3>
+              {loading && (
+                <div className="spinner-border text-primary" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              )}
               <p>
                 Don't have an account? <Link to="/register">Create here</Link>
               </p>
@@ -28,6 +79,7 @@ const Login = () => {
                   name="email"
                   id="email"
                   placeholder="email"
+                  onChange={inputValue}
                 />
               </div>
               <div className="form_input_wrap">
@@ -39,6 +91,7 @@ const Login = () => {
                   name="password"
                   id="password"
                   placeholder="password"
+                  onChange={inputValue}
                 />
               </div>
               <input className="submit_btn" type="submit" value="Sign In" />

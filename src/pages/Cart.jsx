@@ -78,7 +78,7 @@ const Cart = () => {
               <div className="order_items_price d-flex align-items-center justify-content-between" >
                 <p>ITEMS <span>{cartState.items.length}</span></p>
                 <p>${
-                    price.reduce( (total, current) => total + current)
+                    price.reduce( (total, current) => total + current,0)
               }</p>
               </div>
               <div className="payments_items">
@@ -93,7 +93,7 @@ const Cart = () => {
               <div className="total_price d-flex align-items-center justify-content-between">
                 <p>Total</p>
                 <p>${
-                    price.reduce( (total, current) => total + current) 
+                    price.reduce( (total, current) => total + current,0) 
               }</p>
               </div>
               <div className="payment_submit my-2">

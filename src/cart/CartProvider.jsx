@@ -8,6 +8,10 @@ const useCartContext = () => useContext(CartContext);
 
 // Reducer function for cart actions
 // Reducer function for cart actions
+
+const initialState = {
+  items: getCart()
+}
 const cartReducer = (state, action) => {
     switch (action.type) {
       case 'ADD_TO_CART':
@@ -49,17 +53,9 @@ const cartReducer = (state, action) => {
 // CartProvider component to wrap the app and provide the cart context
 const CartProvider = ({ children }) => {
 
-    const getCart = () => {
-        let localData = localStorage.getItem("cart");
 
-        if(localData === []){
-            return []
-        }else{
-            return JSON.parse(localData)
-        }
-    }
 
-  const [cartState, dispatch] = useReducer(cartReducer, { items: getCart() });
+  const [cartState, dispatch] = useReducer(cartReducer, {items: []});
 
 
 
