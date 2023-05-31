@@ -63,6 +63,7 @@ const useAsync = (fetchFunction) => {
           setData(null);
           setStatus('error');
           setError(error.message);
+
         }
       }
     };
@@ -79,7 +80,8 @@ const useAsync = (fetchFunction) => {
     isLoading: status === 'pending',
     isSuccess: status === 'success',
     isError: status === 'error',
-    error
+    error,
+    setData
   };
 };
 

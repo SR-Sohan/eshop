@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost/react/eshopApi/",
+  baseURL: "http://localhost/react/eshopapi/",
   timeout: 15000,
 });
 const response = (data) => data.data;
