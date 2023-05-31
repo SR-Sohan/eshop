@@ -1,5 +1,13 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
+const getCart = () => {
+  let localData = localStorage.getItem("cart");
 
+  if (localData === null || localData === undefined || localData === "") {
+    return [];
+  } else {
+    return JSON.parse(localData);
+  }
+};
 // Create the cart context
 const CartContext = createContext();
 
@@ -55,7 +63,7 @@ const CartProvider = ({ children }) => {
 
 
 
-  const [cartState, dispatch] = useReducer(cartReducer, {items: []});
+  const [cartState, dispatch] = useReducer(cartReducer, initialState);
 
 
 
