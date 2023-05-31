@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import img from "../assets/images/products/p1.png"
 import Rating from '../components/common/Rating';
 import {AiOutlinePlus,AiOutlineMinus} from "react-icons/ai";
-import useAsync from '../hooks/useAsync';
-import ProductServices from '../services/ProductServices';
 import { useParams } from 'react-router-dom';
 const imgUrl = import.meta.env.VITE_API_IMG_URL;
+import { useCartContext } from '../cart/CartProvider';
 const ProductsDetails = () => {
+  const { addToCart } = useCartContext();
   const {id} = useParams();
   const [product,setProduct] = useState({})
   useEffect(()=> {
@@ -27,9 +26,7 @@ const ProductsDetails = () => {
       setQuantity(quantity-1);
     }
   }
-  const addToCart = (p) => {
-    console.log(p);
-  }
+
    return (
     <div className='productDetails_component my-5 py-2'>
       <div className="container">

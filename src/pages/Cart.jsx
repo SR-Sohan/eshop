@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import img from "../assets/images/products/p1.png";
 import {AiOutlinePlus,AiOutlineMinus} from "react-icons/ai";
+import { useCartContext } from '../cart/CartProvider';
+const imgUrl = import.meta.env.VITE_API_IMG_URL;
 
 const Cart = () => {
-  const [quantity,setQuantity] = useState(1);
 
-  const handlePlus = () => {
-    setQuantity(quantity+1);
+  const { cartState,addToCart ,removeFromCart,quantityMinus} = useCartContext();
+
+  const price = []
+  const total = () => {
+    cartState.items.map( item => price.push(item.price * item.quantity))
   }
-  const handleMinus = () => {
-    if(quantity >= 2){
-      setQuantity(quantity-1);
-    }
-  }
+  total();
+
   return (
     <div className="cart_component my-5 py-3">
       <div className="container">
@@ -29,40 +30,44 @@ const Cart = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="cart_wrapper">
+                  {
+                    cartState.items.map( item => <tr key={item.id} className="cart_wrapper">
                     <td>
                       <div className="cart_item">
                         <div className="cart_img d-flex align-items-center">
                           <div className="cart_img_box">
-                            <img src={img} alt="" />
+                            <img src={`${imgUrl}/product/${item.image}`} alt="" />
                           </div>
                           <div className="cart_img_content">
-                            <p>title</p>
-                            <span>Remove</span>
+                            <p>{item.title}</p>
+                            <span onClick={()=>removeFromCart(item.id)}>Remove</span>
                           </div>
                         </div>
                       </div>
                     </td>
                     <td>
                       <div className="product_details_quantity pt-3">
-                        <div onClick={handleMinus} className="minus">
+                        <div onClick={()=>quantityMinus(item)} className="minus">
                           <AiOutlineMinus />
                         </div>
                         <div className="input_value">
-                          <input disabled type="number" value={quantity} />
+                          <input disabled type="number" value={item.quantity} />
                         </div>
-                        <div onClick={handlePlus} className="plus">
+                        <div onClick={()=> addToCart(item)} className="plus">
                           <AiOutlinePlus />
                         </div>
                       </div>
                     </td>
                     <td>
-                      <p className="cart_price pt-3">$982</p>
+                      <p className="cart_price pt-3">${item.price}</p>
                     </td>
                     <td>
-                    <p className="cart_total_price pt-3">$982</p>
+                    <p className="cart_total_price pt-3">${item.price * item.quantity}</p>
                     </td>
-                  </tr>
+                  </tr>)
+                  }
+                  
+
                 </tbody>
               </table>
             </div>
@@ -71,8 +76,10 @@ const Cart = () => {
             <div className="order_summary">
               <h3>Order Summary</h3>
               <div className="order_items_price d-flex align-items-center justify-content-between" >
-                <p>ITEMS <span>5</span></p>
-                <p>$9712</p>
+                <p>ITEMS <span>{cartState.items.length}</span></p>
+                <p>${
+                    price.reduce( (total, current) => total + current)
+              }</p>
               </div>
               <div className="payments_items">
                 <p>Payments Method</p>
@@ -85,7 +92,9 @@ const Cart = () => {
               </div>
               <div className="total_price d-flex align-items-center justify-content-between">
                 <p>Total</p>
-                <p>$87466</p>
+                <p>${
+                    price.reduce( (total, current) => total + current) 
+              }</p>
               </div>
               <div className="payment_submit my-2">
                 <button>Checkout</button>

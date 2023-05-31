@@ -1,5 +1,6 @@
-import AppRouting from "./AppRouting"
+import AppRouting from "./AppRouting";
+import { CartProvider } from "./cart/CartProvider";
 
-const App = ()  => <AppRouting/>
+const App = ()  => <CartProvider><AppRouting/></CartProvider>
 
 export default App
