@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CategoryServices from '../../services/CategoryServices';
 import useAsync from '../../hooks/useAsync';
 import { toast } from 'react-toastify';
 const imgUrl = import.meta.env.VITE_API_IMG_URL;
 const Categories = () => {
   const {data,isSuccess,setData} = useAsync(CategoryServices.getCategory);
+
+  
 
   const deleteItem = (id) => {
     CategoryServices.deleteCategory(id)

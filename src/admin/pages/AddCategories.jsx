@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import CategoryServices from '../../services/CategoryServices';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const AddCategories = () => {
-  const [title,setTitle] = useState({title: ""})
+  const [data,setData] = useState({title: "",description: ''})
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageChange = (e) => {
@@ -11,21 +12,28 @@ const AddCategories = () => {
     setSelectedImage(file)
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('title', title.title);
-    formData.append('image', selectedImage);
+    formData.append('title', data.title);
+    formData.append('description', data.description);
+    formData.append('image', selectedImage);    
 
-    CategoryServices.postCategory(formData)
-    .then(res => {
-        setTitle({title: ""})
-        setSelectedImage(null)
-        toast.success("Category Added Successfully")      
-    })
-    .catch((err)=>{
-      toast.error(err.message)
-    })
+    try {
+      const response = await axios.post('http://localhost:8080/api/category', formData);
+      console.log(response.data); // Handle the response data here
+    } catch (error) {
+      console.error(error); // Handle any errors here
+    }
+    // CategoryServices.postCategory(formData)
+    // .then(res => {
+    //     setTitle({title: ""})
+    //     setSelectedImage(null)
+    //     toast.success("Category Added Successfully")      
+    // })
+    // .catch((err)=>{
+    //   toast.error(err.message)
+    // })
   }
 
   return (
@@ -34,7 +42,10 @@ const AddCategories = () => {
         <form onSubmit={handleSubmit} className='shadow-lg '>
           <h1>Add Category</h1>
           <div className='input_wrap'>
-            <input onChange={(e) => setTitle((prev)=> ({...prev, title: e.target.value}))} type="text" name="title" id="" placeholder='Title' value={title.title} />
+            <input onChange={(e) => setData((prev)=> ({...prev, title: e.target.value}))} type="text" name="title" id="" placeholder='Title' value={data.title} />
+          </div>
+          <div className='input_wrap'>
+            <input onChange={(e) => setData((prev)=> ({...prev, description: e.target.value}))} type="text" name="description" id="" placeholder='description' value={data.description} />
           </div>
           <div className="input_wrap">
               <input onChange={handleImageChange} type="file" name="" id="" />

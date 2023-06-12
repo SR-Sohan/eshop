@@ -4,7 +4,7 @@ import httpRequest from "./httpClient";
 class BrandServices {
 
     getCategory(){
-        return httpRequest.get("category.php")
+        return httpRequest.get("category")
     }
 
     getCategoryById(id){
@@ -12,7 +12,7 @@ class BrandServices {
     }
 
     postCategory(data){
-        return httpRequest.post("category.php",data)
+        return httpRequest.post("category",data)
     }
 
     updateCategory(id,data){
@@ -20,7 +20,7 @@ class BrandServices {
     }
 
     deleteCategory(id){
-        return httpRequest.remove(`category.php?id=${id}`)
+        return httpRequest.remove(`category?id=${id}`)
     }
 }
 
