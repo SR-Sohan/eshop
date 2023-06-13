@@ -9,10 +9,11 @@ const ProductsDetails = () => {
   const {id} = useParams();
   const [product,setProduct] = useState({})
   useEffect(()=> {
-    fetch("http://localhost/react/eshopApi/products.php?id="+id)
+    fetch(`http://localhost:8080/api/products/${id}`)
     .then( res => res.json())
     .then( data => {
-      setProduct(data[0]);
+      setProduct(data);
+      
     })
   },[])
   const [quantity,setQuantity] = useState(1);
@@ -33,17 +34,15 @@ const ProductsDetails = () => {
          <div className="row">
           <div className="col-md-6">
             <div className="product_details_img">
-              <img src={`${imgUrl}product/${product.image}`} alt="" />
+              <img className='img-fluid' src={`${product && product.image}`} alt="" />
             </div>
           </div>
           <div className="col-md-6">
             <div className="product_details_content">
-              <h3>{product.title}</h3>
-              <h6>Price: ${product.price}</h6>
-              <h6>Category: {product.category}</h6>
-              <h6>Brand: {product.brand}</h6>
+              <h3>{product && product.title}</h3>
+              <h6>Price: ${ product && product.price}</h6>
               <Rating/>
-              <p>{product.description}</p>
+              <p>{ product && product.description}</p>
             </div>
             <div className="product_details_quantity">
               <div onClick={handleMinus} className='minus'><AiOutlineMinus/></div>

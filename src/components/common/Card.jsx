@@ -9,7 +9,7 @@ const Card = ({col,product}) => {
     <div className={colClass}>
       <div className="product_card">
         <div className="product_img">
-            <img src={`${imgUrl}/product/${product.image}`} alt="" />
+            <img src={`${product.image}`} alt="" />
         </div>
         <div className="product_content">
             <div className="product_title d-flex align-items-center justify-content-between">

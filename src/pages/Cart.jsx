@@ -36,7 +36,7 @@ const Cart = () => {
                       <div className="cart_item">
                         <div className="cart_img d-flex align-items-center">
                           <div className="cart_img_box">
-                            <img src={`${imgUrl}/product/${item.image}`} alt="" />
+                            <img src={`${item.image}`} alt="" />
                           </div>
                           <div className="cart_img_content">
                             <p>{item.title}</p>

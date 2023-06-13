@@ -4,11 +4,11 @@ import httpRequest from "./httpClient";
 class ProductServices {
 
     getProducts(){
-        return httpRequest.get("products.php")
+        return httpRequest.get("products")
     }
 
     getProductById(id){
-        return httpRequest.get(`products.php?id=${id}`)
+        return httpRequest.get(`products/${id}`)
     }
 
     postProduct(data){
