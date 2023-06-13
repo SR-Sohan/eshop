@@ -3,24 +3,24 @@ import httpRequest from "./httpClient";
 
 class BrandServices {
 
-    getBrands(){
-        return httpRequest.get("brands.php")
+    getSubCategory(){
+        return httpRequest.get("subcategories")
     }
 
-    getProductById(id){
-        return httpRequest.get(`products/${id}`)
+    getSubCategoryById(id){
+        return httpRequest.get(`subcategories/${id}`)
     }
 
-    postBrand(data){
-        return httpRequest.post("brands.php",data)
+    postSubCategory(data){
+        return httpRequest.post("subcategories",data)
     }
 
     updateProduct(id,data){
-        return httpRequest.patch(`products/${id}`,data)
+        return httpRequest.patch(`subcategories/${id}`,data)
     }
 
     deleteBrand(id){
-        return httpRequest.remove(`brands.php?id=${id}`)
+        return httpRequest.remove(`subcategories/${id}`)
     }
 }
 

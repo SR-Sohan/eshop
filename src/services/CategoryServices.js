@@ -4,23 +4,23 @@ import httpRequest from "./httpClient";
 class BrandServices {
 
     getCategory(){
-        return httpRequest.get("category")
+        return httpRequest.get("categories")
     }
 
     getCategoryById(id){
-        return httpRequest.get(`category/${id}`)
+        return httpRequest.get(`categories/${id}`)
     }
 
     postCategory(data){
-        return httpRequest.post("category",data)
+        return httpRequest.post("categories",data)
     }
 
     updateCategory(id,data){
-        return httpRequest.patch(`category/${id}`,data)
+        return httpRequest.patch(`categories/${id}`,data)
     }
 
     deleteCategory(id){
-        return httpRequest.remove(`category?id=${id}`)
+        return httpRequest.remove(`categories/${id}`)
     }
 }
 

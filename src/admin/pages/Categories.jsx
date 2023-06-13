@@ -39,7 +39,7 @@ const Categories = () => {
                 isSuccess && data.map( (item,index) =>  <tr key={item.id} className='pList'>
                 <td>{index+1}</td>
                 <td>{item.title}</td>
-                <td className='list_img'><img src={`${imgUrl}/category/${item.image}`} alt="" /></td>
+                <td className='list_img'><img src={`${item.image}`} alt="" /></td>
                 <td>
                   <button className='list_btn '>Edit</button>
                   <button className='list_btn '>View</button>

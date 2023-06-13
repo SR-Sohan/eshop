@@ -29,11 +29,11 @@ const Sidebar = () => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Brands
+             Sub-ategories
             </button>
             <ul className="dropdown-menu">
-                <li><Link to="brands">Brand</Link></li>
-                <li><Link to="add-brand">Add Brand</Link></li>
+                <li><Link to="brands">SubCategories</Link></li>
+                <li><Link to="add-brand">Add SubCategories</Link></li>
             </ul>
           </div>
         </div>

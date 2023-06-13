@@ -19,21 +19,16 @@ const AddCategories = () => {
     formData.append('description', data.description);
     formData.append('image', selectedImage);    
 
-    try {
-      const response = await axios.post('http://localhost:8080/api/category', formData);
-      console.log(response.data); // Handle the response data here
-    } catch (error) {
-      console.error(error); // Handle any errors here
-    }
-    // CategoryServices.postCategory(formData)
-    // .then(res => {
-    //     setTitle({title: ""})
-    //     setSelectedImage(null)
-    //     toast.success("Category Added Successfully")      
-    // })
-    // .catch((err)=>{
-    //   toast.error(err.message)
-    // })
+   
+    CategoryServices.postCategory(formData)
+    .then(res => {
+      setData({title: "",description: ''})
+        setSelectedImage(null)
+        toast.success("Category Added Successfully")      
+    })
+    .catch((err)=>{
+      toast.error(err.message)
+    })
   }
 
   return (
